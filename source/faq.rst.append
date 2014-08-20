@@ -1,0 +1,36 @@
+.. _denzil_to_dora_label:
+
+Upgrade Denzil to Dora
+----------------------
+
+The following instructions are valid only if you are using our SDK with splashscreen application.
+First, if you don't know what Yocto version are you using open a terminal and launch these commands:
+
+.. host::
+
+ | cd /home/architech/architech_sdk/architech/pengwyn/splashscreen
+ | git branch
+
+If the output contains the line "* Denzil" and not "* Dora" then you are using Denzil yocto version and you can update it.
+The upgrade can be easly accomplished with few clicks by the Splashscreen. This will update all the sources for this board, therefore a full re-compilation will be required.
+The directories in */home/architech/architech_sdk/architech/pengwyn/* will be substituted with the new ones. The old directories will be saved in */home/architech/architech_sdk/architech/pengwyn/denzil* folder included the workspace with your projects.
+
+.. warning::
+
+ | Yocto **denzil** will be unusable after the update. Proceed only if you want work with **dora** version.
+ | Internet connection required.
+
+The first step is upgrade the Splashscreen application. To do this, in the main screen click on *update* link. After a while the application will be closed and reopened.
+
+.. image:: _static/splashscreen_update.jpg
+
+The second and last step is going to the pengwyn board screen and click on *update board*. The starting upgrade works in background, so be patient and wait the window to confirm the operation, when displayed click on **yes** to accept and insert the sudo password (default: *architech*) when the input box will appear.
+
+.. image:: _static/splashscreen_pengwyn_update.jpg
+
+This update can take even more of an hour.
+
+.. note::
+
+ | If you wish you can delete */home/architech/architech_sdk/architech/pengwyn/denzil* directory but be careful because there is also the workspace folder with all your projects!
+
