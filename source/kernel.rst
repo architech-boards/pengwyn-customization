@@ -57,13 +57,11 @@ Now that you have the sources, you can start browsing the code from the followin
  | ~/Documents/ti-linux-kernel/arch/arm/boot/dts/pengwyn-dvi.dts
  | ~/Documents/ti-linux-kernel/arch/arm/boot/dts/pengwyn-touch.dts
 
-For build the kernel the cross-toolchain must be installed in */opt/poky/1.5.3* directory, see in :ref:`the cross-toolchain<crosstoolchain>` paragraph.
-Source the script to load the proper environment for the cross-toolchain:
+For build the kernel source the script to load the proper environment for the cross-toolchain:
 
 .. host::
 
- | source /opt/poky/1.5.3/environment-setup-armv7a-vfp-neon-poky-linux-@eabi@
- | unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
+ | source /home/architech/architech_sdk/architech/pengwyn/toolchain/environment-nofs
 
 and you are ready to customize the kernel:
 

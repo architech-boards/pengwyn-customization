@@ -58,50 +58,6 @@ The second way is to get the official U-Boot sources and patch them with @board@
  | cd u-boot
  | git checkout 78d8ebd4a0214b72a125f5b98c5ed2f9a3e5e783
 
-.. _crosstoolchain:
-
-The cross-toolchain
--------------------
-
-| In order to build the u-boot you need install the toolchain in */opt/poky*. 
-| You can build the toolchain or download it from our server.
-
-The most comfortable way to build the toolchain is to ask *Bitbake* for it:
-
-.. host::
-
- | cd /path/to/yocto/directory
- | source poky/oe-init-build-env
- | bitbake meta-toolchain
-
-When *Bitbake* finishes, you find an installer script under directory:
-
-.. host::
-
- | /path/to/yocto/directory/build/tmp/deploy/sdk/
-
-If you prefer download the same file already compiled from bitbake, you can download here `poky-eglibc-i686-meta-toolchain-armv7a-vfp-neon-toolchain-1.5.3.sh <http://downloads.architechboards.com/pengwyn/toolchain/dora/1/bin/poky-eglibc-i686-meta-toolchain-armv7a-vfp-neon-toolchain-1.5.3.sh>`_ .
-
-.. note::
-
-  Install the toolchain in default directory (*/opt/poky/1.5.3*)
-
-Run the script installer and you get, under the installation directory */opt/poky/1.5.3/*, a script to *source* to get your environment
-almost in place for compiling. The name of the script is:
-
-.. host::
-
- | environment-setup-armv7a-vfp-neon-poky-linux-@eabi@
-
-Anyway, the environment is not quite right for compiling the bootloader and the Linux kernel, you need to unset
-a few variables first to get it ready:
-
-.. host::
-
- | unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
-
-Here you go, you now have the proper working environment to compile *u-boot* (or the Linux kernel).
-
 Build U-boot
 ------------
 
@@ -127,13 +83,11 @@ Configuration and board files for @board@ board are in:
  | /home/@user@/Documents/u-boot/include/configs/pengwyn.h
 
 Suppose you modified something and you wanted to recompile the sources to test your patches, well, you
-need a cross-toolchain (see :ref:`crosstoolchain` Section). To use it to compile the bootloader 
-or the operating system kernel run:
+need a cross-toolchain. To use it to compile the bootloader or the operating system kernel run:
 
 .. host::
 
- | source /opt/poky/1.5.3/environment-setup-armv7a-vfp-neon-poky-linux-@eabi@
- | unset CFLAGS CPPFLAGS CXXFLAGS LDFLAGS
+ | source /home/architech/architech_sdk/architech/pengwyn/toolchain/environment-nofs
 
 then you can run these commands to compile it:
 
